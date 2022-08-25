@@ -1,0 +1,6 @@
+
+*logs/
+
+*.pth
+
+!.gitignore
