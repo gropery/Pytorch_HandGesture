@@ -1,6 +1,7 @@
 # 训练数据
 import time
 import cv2 as cv
+import torchvision
 from torch.utils.data import DataLoader, Dataset
 from torch.utils.tensorboard import SummaryWriter
 from torchvision import transforms
@@ -68,7 +69,10 @@ test_dataloader = DataLoader(test_data, batch_size=8, shuffle=True)
 
 
 # 创建网络模型
-net = MyNet()
+# net = MyNet()
+# net = torchvision.models.alexnet(weights=None, num_classes=10)
+# net = torchvision.models.vgg16(weights=None, num_classes=10)
+net = torchvision.models.resnet50(weights=None, num_classes=10)
 net = net.to(device)
 
 # 损失函数

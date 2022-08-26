@@ -1,4 +1,5 @@
 import torch
+import torchvision
 from torch import nn
 import torch.nn.functional as F
 
@@ -32,9 +33,26 @@ class MyNet(nn.Module):
             num_features *= s
         return num_features
 
+
 if __name__ == '__main__':
     net = MyNet()
     input = torch.randn(8, 3, 100, 100)
     out = net(input)
-    print(out.shape)
-    print(out)
+    # print(out.shape)
+    # print(out)
+
+    # model = torchvision.models.alexnet(weights=None, num_classes=10)
+    # model = torchvision.models.vgg16(weights=None, num_classes=10)
+    # model = torchvision.models.resnet18(weights=None, num_classes=10)
+    # model = torchvision.models.resnet34(weights=None, num_classes=10)
+    model = torchvision.models.resnet50(weights=None, num_classes=10)
+    # model = torchvision.models.resnet101(weights=None, num_classes=10)
+    # model = torchvision.models.resnet152(weights=None, num_classes=10)
+    print(model)
+
+    # target output size of 5x7
+    m = nn.AdaptiveAvgPool2d((5, 7))
+    input = torch.randn(1, 64, 8, 9)
+    output = m(input)
+    print(output.shape)
+

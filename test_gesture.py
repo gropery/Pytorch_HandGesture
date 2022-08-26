@@ -1,4 +1,5 @@
 import cv2 as cv
+import torchvision
 from torchvision import transforms
 from model import *
 
@@ -6,8 +7,11 @@ from model import *
 tensor_trans = transforms.ToTensor()
 
 # 加载训练好的网络
-net = MyNet()
-net.load_state_dict(torch.load('./pths/gesture_50.pth', map_location=torch.device('cpu')))
+# net = MyNet()
+# net = torchvision.models.alexnet(weights=None, num_classes=10)
+# net = torchvision.models.vgg16(weights=None, num_classes=10)
+net = torchvision.models.resnet50(weights=None, num_classes=10)
+net.load_state_dict(torch.load('./pths/gesture_30.pth', map_location=torch.device('cpu')))
 
 # 从图片中读取图像分类 ##############################################
 img_path = 'datasets/Sign-Language-Digits-Dataset/Examples/example_6.JPG'
