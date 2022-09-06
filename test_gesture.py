@@ -47,6 +47,12 @@ while True:
         print("Can't receive frame (stream end?). Exiting ...")
         break
 
+    # h, w, c = frame.shape
+    # print('h=', h, 'w=', w, 'c=', c)
+    # # 取目标区域时,前面是h范围，后面是w范围
+    # im2 = frame[100:200, 0:100]
+    # print(im2.shape)
+    # cv.imshow('im2', im2)
     # 开始预测
     im = cv.resize(frame, (100, 100))
     im = tensor_trans(im)
